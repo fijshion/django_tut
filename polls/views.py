@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 
 def index(request):
+    latest_poll_list = Poll.
     return HttpResponse("Hello, World. You\'re at the poll index.")
 
 def detail(request, poll_id):
