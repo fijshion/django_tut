@@ -1,5 +1,12 @@
 # Django settings for mysite project.
 
+import os
+import django
+# calculated paths for django and the site
+# used as starting points for various other paths
+DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
@@ -12,7 +19,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/chris/PycharmProjects/django_tutorial/sqlite3.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SITE_ROOT) + '/sqlite3.db' #'/home/chris/PycharmProjects/django_tutorial/sqlite3.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -111,7 +118,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/chris/PycharmProjects/django_tutorial/templates'
+    os.path.join(SITE_ROOT, 'templates') 
 )
 
 INSTALLED_APPS = (
