@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.http import HttpResponseNotFound, HttpResponseServerError
+from django.template.loader import render_to_string
 
 
 def handle404(request):
-    return render(request, 'mysite/handle404.html')
+    return HttpResponseNotFound(render_to_string('mysite/handle404.html'))
 
 
 def handle500(request):
-    return render(request, 'mysite/handle500.html')
+    return HttpResponseServerError(render_to_string('mysite/handle500.html'))
